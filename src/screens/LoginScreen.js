@@ -1,18 +1,44 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableHighlight } from 'react-native';
 
-import CircleButton from '../elements/CircleButton';
-
 class LoginScreen extends React.Component {
+  state = {
+    email: '',
+    password: '',
+  }
+
+  // eslint-disable-next-line
+  handleSubmit(){
+
+    // this.props.navigation.navigate('Home')
+
+    // Log in!!
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
           ログイン
         </Text>
-        <TextInput style={styles.input} value="Email Address" />
-        <TextInput style={styles.input} value="Password" />
-        <TouchableHighlight style={styles.button} title="送信" onPress={() => {}} underlayColor='#c70f66'>
+        <TextInput
+          style={styles.input}
+          value={this.state.email}
+          onChangeText={(text) => { this.setState({ email: text }); }} // この書き方で、関数を書かなくて良い（textとpasswordが違うだけのものが複数あったり）
+          autoCapitalize="none" // 入力文字の一番はじめを大文字にする機能を無効
+          autoCorrect={false} // テキストの自動補正を無効にする（texttなど）
+          placeholder="Email Address"
+        />
+        <TextInput
+          style={styles.input}
+          value={this.state.password}
+          onChangeText={(text) => { this.setState({ password: text }); }}
+          autoCapitalize="none" // 入力文字の一番はじめを大文字にする機能を無効
+          autoCorrect={false} // テキストの自動補正を無効にする（texttなど）
+          placeholder="Password"
+          secureTextEntry
+        />
+        <TouchableHighlight style={styles.button} title="送信" onPress={this.handleSubmit.bind(this)}>
           <Text style={styles.buttonTitle}>ログインする</Text>
         </TouchableHighlight>
       </View>
