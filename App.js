@@ -10,7 +10,7 @@ import SignupScreen from './src/screens/SignupScreen';
 import ENV from './env.json';
 
 const config = {
-  apiKey:            ENV.FIREBASE_AUTH_KEY,
+  apiKey:            ENV.FIREBASE_API_KEY,
   authDomain:        ENV.FIREBASE_AUTH_DOMAIN,
   databaseURL:       ENV.FIREBASE_DB_URL,
   projectId:         ENV.FIREBASE_PRJ_ID,
