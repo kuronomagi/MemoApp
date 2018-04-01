@@ -10,10 +10,10 @@ class MemoCreateScreen extends React.Component {
   }
 
   handlePress() {
-    const { params } = this.props.navigation.state;
-    const db = firebase.firestore();
+    const db = firebase.firestore(); // データベースにアクセス
+    const { currentUser } = firebase.auth(); // 現在ログインしているユーザーを取得
     // バックコート 変数を定義するためにこれをつかう
-    db.collection(`users/${params.currentUser.uid}/memos`).add({
+    db.collection(`users/${currentUser.uid}/memos`).add({
       body: this.state.body,
       createdON: new Date(),
     })
