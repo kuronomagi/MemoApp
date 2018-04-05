@@ -18,6 +18,11 @@ class MemoDetailScreen extends React.Component {
     this.setState({ memo: params.memo });
   }
 
+  // 次の画面で変更した内容をmemoに渡して画面を更新する
+  returnMemo(memo) {
+    this.setState({ memo });
+  }
+
   // substring(0, 10) = 0~10文字めを表示
   render() {
     const { memo } = this.state;
@@ -41,7 +46,9 @@ class MemoDetailScreen extends React.Component {
         <CircleButton
           color="white"
           style={styles.editButton}
-          onPress={() => { this.props.navigation.navigate('MemoEdit', { memo }); }}>
+          // this.returnMemo.bind(this) は特殊な書き方
+          onPress={() => { this.props.navigation.navigate('MemoEdit', { ...memo, returnMemo: this.returnMemo.bind(this) }); }}
+        >
           {'\uf040'}
         </CircleButton>
       </View>

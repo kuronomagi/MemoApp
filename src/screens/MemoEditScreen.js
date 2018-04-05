@@ -5,6 +5,11 @@ import firebase from 'firebase';
 
 import CircleButton from '../elements/CircleButton';
 
+
+const dateString = (date) => {
+  const str = date.toISOString();
+  return str.split('T')[0];
+};
 class MemoEditScreen extends React.Component {
   state = {
     body: '',
@@ -13,27 +18,45 @@ class MemoEditScreen extends React.Component {
 
   componentWillMount() {
     // console.log(this.props.navigation.state.params);
+    // console.log(this.props.navigation.state.params.body);
+
+    /* movie  old
+      const { params } = this.props.navigation.state;
+      this.setState({
+        body: params.memo.body,
+        key: params.memo.key,
+      });
+    */
+
     const { params } = this.props.navigation.state;
     this.setState({
-      body: params.memo.body,
-      key: params.memo.key,
+      body: params.body,
+      key: params.key,
     });
   }
 
   handlePress() {
-    console.log('pressed');
+    // console.log('pressed');
 
     const { currentUser } = firebase.auth(); // firebaseから情報を抜き取る
     const db = firebase.firestore();
+    const newDate = new Date();
 
-    console.log(this.state);
+    // console.log(this.state);
 
     db.collection(`users/${currentUser.uid}/memos`).doc(this.state.key)
       .update({
         body: this.state.body,
+        createdON: newDate,
       })
       .then(() => {
-        console.log('success!');
+        const { navigation } = this.props;
+        navigation.state.params.returnMemo({
+          body: this.state.body,
+          key: this.state.key,
+          createdON: newDate,
+        });
+        navigation.goBack();
       })
       .catch((error) => {
         console.log(error);
