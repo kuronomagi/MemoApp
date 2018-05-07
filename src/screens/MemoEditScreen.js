@@ -7,6 +7,7 @@ import CircleButton from '../elements/CircleButton';
 
 
 const dateString = (date) => {
+  // if (date == null) { return ''; }
   const str = date.toISOString();
   return str.split('T')[0];
 };
@@ -70,6 +71,8 @@ class MemoEditScreen extends React.Component {
           multiline
           value={this.state.body}
           onChangeText={(text) => { this.setState({ body: text }); }}
+          underlineColorAndroid="transparent"
+          textAlignVertical="top"
         />
         <CircleButton onPress={this.handlePress.bind(this)}>
           {'\uf00c'}

@@ -5,6 +5,7 @@ import CircleButton from '../elements/CircleButton';
 
 
 const dateString = (date) => {
+  // if (date == null) { return ''; }
   const str = date.toISOString();
   return str.split('T')[0];
 };
@@ -31,7 +32,7 @@ class MemoDetailScreen extends React.Component {
         <View>
           <View style={styles.memoHeader}>
             <View style={styles.memeHeaderContent}>
-              <Text style={styles.memoHeaderTitle}>{memo.body.substring(0, 10)}</Text>
+              <Text style={styles.memoHeaderTitle}>{memo.body ? memo.body.substring(0, 10) : ''}</Text>
               <Text style={styles.memoHeaderDeta}>{dateString(memo.createdON)}</Text>
             </View>
           </View>
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   editButton: {
-    top: 75,
+    top: 34,
   },
 });
 

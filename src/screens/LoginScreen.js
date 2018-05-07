@@ -45,6 +45,7 @@ class LoginScreen extends React.Component {
           autoCapitalize="none" // 入力文字の一番はじめを大文字にする機能を無効
           autoCorrect={false} // テキストの自動補正を無効にする（texttなど）
           placeholder="Email Address"
+          underlineColorAndroid="transparent"
         />
         <TextInput
           style={styles.input}
@@ -54,8 +55,9 @@ class LoginScreen extends React.Component {
           autoCorrect={false} // テキストの自動補正を無効にする（texttなど）
           placeholder="Password"
           secureTextEntry
+          underlineColorAndroid="transparent"
         />
-        <TouchableHighlight style={styles.button} title="送信" onPress={this.handleSubmit.bind(this)}>
+        <TouchableHighlight style={styles.button} title="送信" onPress={this.handleSubmit.bind(this)} underlayColor="#c70f66">
           <Text style={styles.buttonTitle}>ログインする</Text>
         </TouchableHighlight>
 

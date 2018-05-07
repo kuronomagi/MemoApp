@@ -25,7 +25,7 @@ class MemoListScreen extends React.Component {
         });
         this.setState({ memoList });
       });
-      /*
+  /*
       .get()
       .then((snapshot) => {
         const memoList = [];
