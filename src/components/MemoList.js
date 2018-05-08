@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, FlatList } from 'react-native';
 
 const dateString = (date) => {
-  // if (date == null) { return ''; }
+  if (date == null) { return ''; }
   const str = date.toISOString();
   return str.split('T')[0];
 };
